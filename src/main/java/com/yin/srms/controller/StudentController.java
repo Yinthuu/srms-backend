@@ -25,4 +25,14 @@ public class StudentController {
         return  studentRepo.findAll();
     }
 
+    @DeleteMapping("/student/{id}")
+    String deleteStudent(@PathVariable Long id){
+        if(!studentRepo.existsById(id)){
+            return  "Student with id "+id+" cannot be found.";
+        }
+        studentRepo.deleteById(id);
+        return  "Student with id "+id+" has been deleted success.";
+    }
+
+
 }
